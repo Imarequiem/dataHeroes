@@ -1,17 +1,18 @@
-<!-- eslint-disable vue/no-mutating-props -->
 <template>
   <form class="filter-form" method="get" @click.prevent>
-    <input v-model="props.filter.name" type="text" placeholder="Name">
-    <select v-model="props.filter.status" name="" placeholder="Status">
-      <option value="" />
-      <option value="Alive">Alive</option>
-      <option value="Dead">Dead</option>
-    </select>
-    <input type="submit" value="Submit" @click="emit('toFilter')">
+    <div class="filter-form__filters">
+      <input-form :placeholder="'Name'" :type="'text'" :filter="props.filter" />
+      <select-form :filter="$props.filter" :name="'Status'" />
+    </div>
+
+    <input type="submit" value="Submit" class="filter-form__submit" @click="emit('toFilter')">
   </form>
 </template>
 
 <script setup lang="ts">
+import InputForm from './ui/form/InputForm.vue';
+import SelectForm from './ui/form/SelectForm.vue';
+
 import type { Filter } from '@/types/filter.interface';
 
 const props = defineProps<{
@@ -21,4 +22,34 @@ const props = defineProps<{
 const emit = defineEmits(['toFilter'])
 </script>
 
-<style scoped></style>
+<style scoped lang="scss">
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+
+  &>* {
+    margin: 5px;
+  }
+
+  .filter-form__filters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  input,
+  select {
+    padding: 5px;
+    border-color: transparent;
+    border-radius: 5px;
+  }
+
+  .filter-form__submit {
+    padding: 5px;
+    border-color: transparent;
+    border-radius: 10px;
+  }
+}
+</style>

@@ -9,9 +9,7 @@
         <h1 class="section__text h1">{{ character.name }}</h1>
 
         <span class="section__status">
-          <span class="section__status-span" :class="{ alive: character.status === 'Alive' }">
-            •
-          </span>
+          <span class="section__status-span" :class="{ alive: character.status === 'Alive' }" />
           <p class="section__text p">
             {{ character.status }} - {{ character.species }}
           </p>
@@ -37,6 +35,9 @@
 </template>
 
 <script setup lang="ts">
+defineOptions({
+  name: "CharacterCard"
+})
 import type { Character } from '@/types/characters.interface';
 
 interface Props {
@@ -103,5 +104,22 @@ const { character } = props
 
 .alive {
   background: #55cc44;
+}
+
+@media (max-width: 650px) {
+  .card {
+    height: initial;
+
+    .info {
+      margin-bottom: 10px;
+    }
+  }
+
+  .card>.img>img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+  }
 }
 </style>

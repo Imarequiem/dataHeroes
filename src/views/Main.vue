@@ -10,7 +10,7 @@
 
     </div>
 
-    <div v-if="characters.info" class="cards-container__pagination">
+    <div v-if="characters.info.pages > 1" class="cards-container__pagination">
       <template v-for="(num, index) of characters.info.pages" :key="index">
         <pagination-btn :page="num" :url="route.path" @click="page = num" />
       </template>
@@ -24,7 +24,7 @@ defineOptions({
 })
 
 import { ref, watch } from 'vue';
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import type { Ref } from 'vue';
 
 import CharacterCard from '@/main/characters/character/ui/card/index.vue';
@@ -36,6 +36,7 @@ import { CharactersService } from '@/main/characters/classes/characters.service'
 import type { Characters } from '@/types/characters.interface';
 import type { Filter } from '@/types/filter.interface';
 
+const router = useRouter()
 const route = useRoute()
 
 const filter: Ref<Filter> = ref({
@@ -62,12 +63,21 @@ watch(page, async () => {
 })
 
 async function toFilter() {
+  page.value = 1
   characters.value = await CharactersService.get()
     .fromServer({
       page: page.value,
       name: filter.value.name,
       status: filter.value.status,
     })
+  router.push({
+    path: route.path,
+    query: {
+      page: page.value,
+      name: filter.value.name,
+      status: filter.value.status,
+    }
+  })
 }
 </script>
 
@@ -92,8 +102,24 @@ async function toFilter() {
 .cards-container__pagination {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   width: 70%;
   margin-top: 50px;
+
+  &>a:not(:last-child) {
+    margin-right: 7px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .cards-container__wrap {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .cards-container__card {
+    flex-direction: column;
+  }
 }
 </style>

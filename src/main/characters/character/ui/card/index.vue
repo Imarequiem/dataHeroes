@@ -61,6 +61,8 @@ const { character } = props
   .img>img {
     width: 229.2px;
     height: 220px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
   }
 
   .info {
@@ -120,6 +122,7 @@ const { character } = props
     height: 300px;
     object-fit: cover;
     object-position: center;
+    border-radius: 20px;
   }
 }
 </style>

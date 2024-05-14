@@ -111,6 +111,12 @@ async function toFilter() {
   }
 }
 
+@media (min-width: 1950px) {
+  .cards-container__wrap {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 1250px) {
   .cards-container__wrap {
     grid-template-columns: repeat(1, 1fr);

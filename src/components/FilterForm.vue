@@ -5,7 +5,7 @@
       <select-form :filter="$props.filter" :name="'Status'" />
     </div>
 
-    <input type="submit" value="Submit" class="filter-form__submit" @click="emit('toFilter')">
+    <input type="submit" value="Search" class="filter-form__submit" @click="emit('toFilter')">
   </form>
 </template>
 

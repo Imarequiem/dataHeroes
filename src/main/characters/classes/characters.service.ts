@@ -10,9 +10,17 @@ class CharactersService {
           url.searchParams.append(key, params[key])
         }
 
-        const response = await fetch(url.href)
+        const res = await fetch(url.href)
+          .then((response: any) => {
+            if (response.status === 404) {
+              alert('Not found this character(s) :(')
+              return
+            }
+            return response.json()
+          })
+          .catch((err: any) => console.log(err))
 
-        return response.json()
+        return res
       }
     }
   }

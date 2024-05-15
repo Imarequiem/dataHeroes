@@ -90,7 +90,7 @@ async function toFilter() {
   min-height: 100svh;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 .cards-container__wrap {

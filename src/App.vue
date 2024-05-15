@@ -6,7 +6,6 @@
         <router-view />
       </suspense>
     </main>
-    <Footer />
   </div>
 </template>
 

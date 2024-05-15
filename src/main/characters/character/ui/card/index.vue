@@ -74,6 +74,12 @@ const { character } = props
     height: 100%;
     text-transform: capitalize;
   }
+
+  &:hover {
+    box-shadow: 0px 0px 18px 12px rgba(0, 0, 0, 0.45);
+    -webkit-box-shadow: 0px 0px 18px 12px rgba(0, 0, 0, 0.45);
+    -moz-box-shadow: 0px 0px 18px 12px rgba(0, 0, 0, 0.45);
+  }
 }
 
 .h1 {

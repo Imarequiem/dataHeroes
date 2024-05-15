@@ -1,6 +1,7 @@
 <template>
   <header>
-    <img src="/logo.png" alt="Data Heroes logo" width="100px">
+    <img src="/logo.png" alt="Data Heroes logo" width="100px"
+      @click="$router.push({ path: '/', query: { page: '1' } })">
     <h1>Rick & Morty</h1>
   </header>
 </template>

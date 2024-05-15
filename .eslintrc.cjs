@@ -45,17 +45,6 @@ module.exports = {
         svg: 'always',
         math: 'always'
       }
-    ],
-    'vue/html-indent': [
-      'error',
-      2,
-      {
-        attribute: 1,
-        baseIndent: 1,
-        closeBracket: 0,
-        alignAttributesVertically: true,
-        ignores: []
-      }
     ]
   }
 }

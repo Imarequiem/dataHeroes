@@ -36,6 +36,8 @@ import type { Filter } from '@/types/filter.interface';
 const router = useRouter()
 const route = useRoute()
 
+router.push({ path: '/', query: { page: '1' } })
+
 const filter: Ref<Filter> = ref({
   name: "",
   status: ""

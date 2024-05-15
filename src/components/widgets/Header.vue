@@ -1,6 +1,6 @@
 <template>
   <header>
-    <img src="/public/logo.png" alt="Data Heroes logo" width="100px">
+    <img src="/logo.png" alt="Data Heroes logo" width="100px">
     <h1>Rick & Morty</h1>
   </header>
 </template>

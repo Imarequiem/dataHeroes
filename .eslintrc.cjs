@@ -56,13 +56,6 @@ module.exports = {
         alignAttributesVertically: true,
         ignores: []
       }
-    ],
-    'vue/component-name-in-template-casing': [
-      'error',
-      'kebab-case',
-      {
-        registeredComponentsOnly: true
-      }
     ]
   }
 }

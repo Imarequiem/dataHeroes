@@ -10,11 +10,7 @@
 
     </div>
 
-    <div v-if="characters.info.pages > 1" class="cards-container__pagination">
-      <template v-for="(num, index) of characters.info.pages" :key="index">
-        <pagination-btn :page="num" :url="route.path" @click="page = num" />
-      </template>
-    </div>
+    <pagination :pages="characters.info.pages" @toPage="(num: number) => page = num" />
   </div>
 </template>
 
@@ -27,9 +23,10 @@ import { ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router'
 import type { Ref } from 'vue';
 
+import Pagination from '@/components/pagination/Pagination.vue';
+import FilterForm from '@/components/form/FilterForm.vue';
+
 import CharacterCard from '@/main/characters/character/ui/card/index.vue';
-import PaginationBtn from '@/components/ui/PaginationBtn.vue';
-import FilterForm from '@/components/FilterForm.vue';
 
 import { CharactersService } from '@/main/characters/classes/characters.service';
 
@@ -97,18 +94,6 @@ async function toFilter() {
   justify-items: center;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
-}
-
-.cards-container__pagination {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 70%;
-  margin-top: 50px;
-
-  &>a:not(:last-child) {
-    margin-right: 7px;
-  }
 }
 
 @media (min-width: 1950px) {

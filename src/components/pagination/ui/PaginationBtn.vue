@@ -10,7 +10,7 @@
 <script setup lang="ts">
 defineProps<{
   url: string;
-  page: number;
+  page: number | string;
 }>();
 </script>
 

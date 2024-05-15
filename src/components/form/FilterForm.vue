@@ -10,8 +10,8 @@
 </template>
 
 <script setup lang="ts">
-import InputForm from './ui/form/InputForm.vue';
-import SelectForm from './ui/form/SelectForm.vue';
+import InputForm from './ui/InputForm.vue';
+import SelectForm from './ui/SelectForm.vue';
 
 import type { Filter } from '@/types/filter.interface';
 
